@@ -12,7 +12,6 @@ A backend API for managing educational institute registrations.
 
 ### Boards
 - `GET /api/boards` - Get all boards
-- `POST /api/boards` - Create a new board (admin only)
 
 ### Institutes
 - `POST /api/institutes/register` - Register a new institute
