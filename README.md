@@ -1,34 +1,47 @@
 # Institute Registration System
 
-A backend API for registering different types of educational institutes with MongoDB storage.
+A backend API for managing educational institute registrations.
 
 ## Features
-- Register 4 types of institutes:
-  - Playhouse (requires age group and activities)
-  - School (requires board, medium, class category, and standards with subjects)
-  - College (requires university and degree type)
-  - Competitive Exam Center (requires exam type)
-- Manage education boards (CRUD operations)
-- RESTful API endpoints
+- Register different types of educational institutes (Playhouse, School, College, Competitive Exam Center)
+- Manage education boards with their mediums and standards
+- Get standards based on class category
+- Get subjects based on standard and class category
 
 ## API Endpoints
 
-### Institutes
-- `POST /api/institutes/register` - Register new institute
-- `GET /api/institutes` - Get all registered institutes
-
 ### Boards
-- `POST /api/boards` - Create new education board
-- `GET /api/boards` - Get all active boards
+- `GET /api/boards` - Get all boards
+- `POST /api/boards` - Create a new board (admin only)
 
-## Requirements
-- Node.js
-- MongoDB
-- npm
+### Institutes
+- `POST /api/institutes/register` - Register a new institute
+- `GET /api/institutes` - Get all institutes
+- `GET /api/institutes/standards/:classCategory` - Get standards for a class category
+- `GET /api/institutes/subjects/:classCategory/:standard` - Get subjects for a standard
+- `GET /api/institutes/mediums/:boardName` - Get mediums for a board
 
 ## Installation
+
 1. Clone the repository
-2. Install dependencies:
-```bash
-cd backend
-npm install
+2. Install dependencies: `npm install`
+3. Start the server: `npm start`
+
+## Testing
+
+Use Postman or cURL to test the API endpoints.
+
+### Example: Register a School
+```json
+{
+  "type": "School",
+  "board": "G.S.E.B",
+  "medium": "Gujarati",
+  "classCategory": "Secondary",
+  "standards": [
+    {
+      "standard": "9",
+      "subjects": ["Mathematics", "Science", "English", "Social Science"]
+    }
+  ]
+}
